@@ -1,0 +1,6 @@
+bin/
+obj/
+*.pro.user
+*.autosave
+*.user
+*.user.*
