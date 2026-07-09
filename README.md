@@ -1,10 +1,10 @@
 # Sponsor Module
 
-A C++/Qt sponsor-management module with database CRUD and a richer application layer for analytics, multilingual support, and AI assistance.
+A full C++/Qt sponsor-management application with database CRUD, analytics, multilingual support, AI assistance, theming, and device integration.
 
 ## Overview
 
-This project centers on a `Sponsor` model and its database operations, but the full Qt application in the workspace also includes several advanced user-facing features:
+This project centers on a `Sponsor` model and its database operations, and the packaged Qt app also includes several advanced user-facing features:
 
 - sponsor CRUD management
 - live table display and record selection
@@ -37,14 +37,17 @@ It also provides basic CRUD operations through Qt SQL:
 
 ## Repository contents
 
-- `main.cpp` - entry point
-- `sponsor.h` - sponsor class declaration
-- `sponsor.cpp` - sponsor class implementation
-- `sponsor.cbp` - Code::Blocks project file
-- `test/mainwindow.cpp` - main UI logic for the advanced Qt app
-- `test/geminiai.cpp` - Gemini chat integration
-- `test/arduino.cpp` - Arduino serial helper
-- `test/connection.cpp` - database connection helper
+- `Atelier_Connexion.pro` - Qt project file
+- `main.cpp` - application entry point
+- `mainwindow.cpp` / `mainwindow.h` / `mainwindow.ui` - main UI and logic
+- `sponsor.cpp` / `sponsor.h` - sponsor model and database operations
+- `connection.cpp` / `connection.h` - database connection helper
+- `geminiai.cpp` / `geminiai.h` - Gemini chatbot integration
+- `arduino.cpp` / `arduino.h` - Arduino serial helper
+- `keycardmanager.cpp` / `keycardmanager.h` - key card serial handling
+- `styles/` - dark and light theme stylesheets
+- `translations/` - English, French, and Arabic translations
+- `sponsor.cbp` - legacy Code::Blocks project file
 
 ## Requirements
 
@@ -55,6 +58,7 @@ It also provides basic CRUD operations through Qt SQL:
 - Qt Charts module
 - Qt SerialPort module
 - A database containing a `sponsors` table
+- Environment variable `GEMINI_API_KEY` for chatbot access
 
 ## Expected database table
 
@@ -118,15 +122,15 @@ The project includes a `GeminiHandler` class that sends messages to the Gemini A
 
 ### Manual integration
 
-If you are integrating this class into a larger Qt project, include `sponsor.h`, create a `Sponsor` instance, and call the CRUD methods after opening a valid Qt SQL database connection.
+If you are integrating this app into a larger Qt project, open the database connection first, load `Atelier_Connexion.pro`, and run the application from Qt Creator or Code::Blocks with the Qt toolchain configured.
 
 ## Notes
 
 - The module uses bound SQL parameters, which is a good baseline for safer queries.
-- The full UI code in `test/` and `Atelier_Connexion/` shows the advanced feature set; this folder contains the lighter sponsor model and project files.
+- Translation files and stylesheets are loaded relative to the application directory, so the packaged `translations/` and `styles/` folders should stay alongside the executable.
 - Error reporting is intentionally minimal right now; production apps should surface `QSqlError` details to help with debugging.
-- The Gemini API key should never be hardcoded in production; move it to an environment variable or secure config file.
-- The `main.cpp` file is currently only a placeholder entry point.
+- The Gemini API key is read from `GEMINI_API_KEY` instead of being hardcoded.
+- The `main.cpp` file launches the full Qt UI and database connection flow.
 
 ## License
 

@@ -1,0 +1,22 @@
+QPushButton {
+    background-color: #f9e07e;         /* soft yellow */
+    color: #4a4a4a;                    /* soft gray text */
+    border: 2px solid #f7d26b;         /* light mustard border */
+    border-radius: 15px;               /* rounded corners */
+    padding: 10px 20px;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QPushButton:hover {
+    background-color: #fce44b;         /* lighter yellow on hover */
+    border: 2px solid #fbbd3f;
+    color: #333333;                    /* dark gray text on hover */
+}
+
+QPushButton:pressed {
+    background-color: #f7c241;         /* deeper yellow when pressed */
+    border: 2px solid #f47a21;
+    color: white;
+}
